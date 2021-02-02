@@ -9,6 +9,13 @@ public class Pokemon
    [SerializeField] PokemonBase _base;
    [SerializeField] int level;
 
+    public Pokemon(PokemonBase pBase, int pLevel)
+    {
+        _base = pBase;
+        level = pLevel;
+
+        Init();
+    }
 
 
     public PokemonBase Base { get { return _base; }}
@@ -25,7 +32,7 @@ public class Pokemon
     public int StatusTime { get; set; }
     public int VolatileStatusTime { get; set; }
 
-    public Queue<string> statsChanges { get; private set; } = new Queue<string>();
+    public Queue<string> StatsChanges { get; private set; } 
     public bool HpChanged { get; set; }
 
     
@@ -49,7 +56,7 @@ public class Pokemon
 
         HP = MaxHp;
 
-
+        StatsChanges = new Queue<string>();
         ResetStatBoost();
         Status = null;
         VolatileStatus = null;
@@ -101,9 +108,9 @@ public class Pokemon
             StatsBoosts[stat] = Mathf.Clamp(StatsBoosts[stat] + boost, - 6, 6);
 
             if (boost > 0)
-                statsChanges.Enqueue($"{Base.Name}'s {stat} rose!");
+                StatsChanges.Enqueue($"{Base.Name}'s {stat} rose!");
             else
-                statsChanges.Enqueue($"{Base.Name}'s {stat} fell!");
+                StatsChanges.Enqueue($"{Base.Name}'s {stat} fell!");
 
             Debug.Log($"{stat} has been boosted to {StatsBoosts[stat]}");
 
@@ -180,7 +187,7 @@ public class Pokemon
 
         Status = StatusConditionsDB.conditions[statusID];
         Status?.Onstart?.Invoke(this);
-        statsChanges.Enqueue($"{Base.Name} {Status.StartMessage}");
+        StatsChanges.Enqueue($"{Base.Name} {Status.StartMessage}");
         OnStatusChanged?.Invoke();
     }
 
@@ -195,7 +202,7 @@ public class Pokemon
 
         VolatileStatus = StatusConditionsDB.conditions[statusID];
         VolatileStatus?.Onstart?.Invoke(this);
-        statsChanges.Enqueue($"{Base.Name} {VolatileStatus.StartMessage}");
+        StatsChanges.Enqueue($"{Base.Name} {VolatileStatus.StartMessage}");
         
     }
     public void CureVolatileStatus()

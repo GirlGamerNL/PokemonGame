@@ -23,4 +23,16 @@ public class PokemonParty : MonoBehaviour
     {
         return pokemon.Where(x => x.HP > 0).FirstOrDefault();
     }
+
+    public void AddPokemon(Pokemon newPokemon)
+    {
+        if (pokemon.Count < 6)
+        {
+            pokemon.Add(newPokemon);
+        }
+        else
+        {
+            //TODO: Add pc system
+        }
+    }
 }

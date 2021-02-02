@@ -26,6 +26,9 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spAttack;
     [SerializeField] int spDefence;
     [SerializeField] int speed;
+   
+    
+    [SerializeField] int catchRate = 255;
 
     [SerializeField] List<LearnableMove> learnableMoves;
 
@@ -80,7 +83,9 @@ public class PokemonBase : ScriptableObject
     public int Speed
     {
         get { return speed; }
-    }  
+    }
+
+    public int CatchRate => catchRate;
 
     public List<LearnableMove> LearnableMoves
     {

@@ -26,7 +26,7 @@ public class StatusConditionsDB
                 OnAfterTurn = (Pokemon pokemon) =>
                 {
                     pokemon.UpdateHP(pokemon.MaxHp / 8);
-                    pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} was hurt by the poison");
+                    pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} was hurt by the poison");
                 }
             }
         },
@@ -39,7 +39,7 @@ public class StatusConditionsDB
                 OnAfterTurn = (Pokemon pokemon) =>
                 {
                     pokemon.UpdateHP(pokemon.MaxHp / 16);
-                    pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} was hurt by the burn");
+                    pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} was hurt by the burn");
                 }
             }
         },
@@ -53,7 +53,7 @@ public class StatusConditionsDB
                 {
                     if (Random.Range(1, 5) == 1)
                     {
-                       pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} is paralyzed! It can't move!");
+                       pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} is paralyzed! It can't move!");
                        return false;
 	                }
                     return true;
@@ -71,10 +71,10 @@ public class StatusConditionsDB
                     if (Random.Range(1, 5) == 1)
                     {
                        pokemon.CureStatus();
-                       pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} is not frozen anymore!");
+                       pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} is not frozen anymore!");
                        return false;
 	                }
-                    pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} is frozen solid!");
+                    pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} is frozen solid!");
                     return true;
                 }
             }
@@ -95,12 +95,12 @@ public class StatusConditionsDB
                     if (pokemon.StatusTime <= 0)
                     {
                         pokemon.CureStatus();
-                        pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} woke up!");
+                        pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} woke up!");
                         return true;
 	                }
 
                     pokemon.StatusTime--;
-                    pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} is fast asleep!");
+                    pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} is fast asleep!");
                     return false;
                 }
             }
@@ -123,7 +123,7 @@ public class StatusConditionsDB
                     if (pokemon.VolatileStatusTime <= 0)
                     {
                         pokemon.CureVolatileStatus();
-                        pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} is no longer confused");
+                        pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} is no longer confused");
                         return true;
 	                }
 
@@ -133,14 +133,28 @@ public class StatusConditionsDB
                     return true;
 
 	                
-                    pokemon.statsChanges.Enqueue($"{pokemon.Base.Name} is confused!");
+                    pokemon.StatsChanges.Enqueue($"{pokemon.Base.Name} is confused!");
                     pokemon.UpdateHP(pokemon.MaxHp / 8);
-                    pokemon.statsChanges.Enqueue("It hit itself in confusion");
+                    pokemon.StatsChanges.Enqueue("It hit itself in confusion");
                     return false;
                 }
             }
         }
     };
+
+    public static float GetStatusBonus(StatusConditions conditions)
+    {
+        if (conditions == null)
+            return 1f;
+        else if (conditions.Id == StatusID.slp || conditions.Id == StatusID.frz)
+            return 2.5f;
+        else if (conditions.Id == StatusID.par || conditions.Id == StatusID.psn || conditions.Id == StatusID.brn)
+            return 1.5f;
+
+        
+        
+        return 1f;
+    }
 }
 
 public enum StatusID

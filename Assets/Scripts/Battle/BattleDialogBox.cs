@@ -12,6 +12,7 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] GameObject actionSelecter;
     [SerializeField] GameObject moveSelecter;
     [SerializeField] GameObject moveDetails;
+    [SerializeField] GameObject choiceBox;
 
 
 
@@ -19,7 +20,10 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] List<Text> moveTexts;
    
     [SerializeField] Text ppText;
-    [SerializeField] Text typeText;
+    [SerializeField] Text typeText; 
+    
+    [SerializeField] Text noText;
+    [SerializeField] Text yesText;
 
     public void SetDialog(string dialog)
     {
@@ -51,6 +55,11 @@ public class BattleDialogBox : MonoBehaviour
     {
         moveSelecter.SetActive(enabeled);
         moveDetails.SetActive(enabeled);
+    }
+    
+    public void EnableChoiceBox(bool enabled)
+    {
+        choiceBox.SetActive(enabled);
     }
 
     //if you hover over an action, it gets highlighted
@@ -108,6 +117,20 @@ public class BattleDialogBox : MonoBehaviour
             {
                 moveTexts[i].text = "-";
             }
+        }
+    }
+
+    public void UpdateChoiceBox(bool yesSelected)
+    {
+        if (yesSelected)
+        {
+            yesText.color = highlight;
+            noText.color = Color.black;
+        }
+        else
+        {
+            yesText.color = Color.black;
+            noText.color = highlight;
         }
     }
 }

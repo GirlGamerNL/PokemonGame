@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] string name;
     [SerializeField] Sprite sprite;
 
+    const float offsetY = 0.3f;
 
     public event Action OnEncounterd;
     public event Action<Collider2D> OnEnterTrainersView;
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
     //When you walk through grass, you can get an encounter
     private void CheckForEncounters()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.grassLayer) != null)
+        if (Physics2D.OverlapCircle(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.i.grassLayer) != null)
         {
             if (Random.Range(1, 101) <= 10)
             {
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfInTrainersView()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.fovLayer) != null)
+        if (Physics2D.OverlapCircle(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.i.fovLayer) != null)
         {
             var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.fovLayer);
             if (collider != null)

@@ -7821,9 +7821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemon:
   - _base: {fileID: 11400000, guid: 326df8a17df773648adf4b5e583191de, type: 2}
-    level: 50
-  - _base: {fileID: 11400000, guid: fa1cddeba3916f8499c07a3c532670da, type: 2}
-    level: 70
+    level: 6
 --- !u!114 &1539405044
 MonoBehaviour:
   m_ObjectHideFlags: 0

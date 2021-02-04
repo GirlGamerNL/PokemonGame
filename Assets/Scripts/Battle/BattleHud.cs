@@ -45,6 +45,7 @@ public class BattleHud : MonoBehaviour
         _pokemon.OnStatusChanged += SetStatusText;
     }
 
+    // Show what status condition the pokemon have
     void SetStatusText()
     {
         if (_pokemon.Status == null)

@@ -497,12 +497,14 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    //This is what happens if a pokemon (your or opponants) faints
     IEnumerator HandlePokemonFainted(BattleUnit faintedUnit)
     {
         yield return dialogBox.TypeDialog($"{faintedUnit.Pokemon.Base.Name} fainted!");
         faintedUnit.PlayFaintAnimation();
         yield return new WaitForSeconds(2f);
 
+        //if it isn't the player pokemon that fainted, you get exp points
         if (!faintedUnit.IsPlayerUnit)
         {
             //exp gain
@@ -521,6 +523,23 @@ public class BattleSystem : MonoBehaviour
             {
                 PlayerUnit.Hud.SetLevel();
                 yield return dialogBox.TypeDialog($"{PlayerUnit.Pokemon.Base.Name} grew to level {PlayerUnit.Pokemon.Level}!");
+
+                //try to learn new move
+                var newMove = PlayerUnit.Pokemon.GetLearnableMoveAtCurrLevel();
+                if (newMove != null)
+                {
+                    if (PlayerUnit.Pokemon.Moves.Count < PokemonBase.MaxNumOfMoves)
+                    {
+                        PlayerUnit.Pokemon.LearnMove(newMove);
+                        yield return dialogBox.TypeDialog($"{PlayerUnit.Pokemon.Base.Name} learned {newMove.Base.Name}!");
+                        dialogBox.SetMoveNames(PlayerUnit.Pokemon.Moves);
+                    }
+                    else
+                    {
+                       
+                    }
+                }
+
 
                 yield return PlayerUnit.Hud.SetExpSmooth(true);
             }
@@ -755,11 +774,12 @@ public class BattleSystem : MonoBehaviour
 
         return shakeCount;
     }
-
+    //If you click the run button, you can try to escape
     IEnumerator TryToEscape()
     {
         state = BattleState.Busy;
 
+        //You can't run if you're in a trainer battle
         if (isTrainerBattle)
         {
             yield return dialogBox.TypeDialog($"You can't run from trainer battles!");
@@ -772,11 +792,13 @@ public class BattleSystem : MonoBehaviour
         int playerSpeed = PlayerUnit.Pokemon.Speed;
         int enemySpeed = EnemyUnit.Pokemon.Speed;
 
+        //if you are faster then the opponent, you escape
         if (enemySpeed < playerSpeed)
         {
             yield return dialogBox.TypeDialog($"Ran away safely!");
             BattleOver(true);
         }
+        //otherwise math will decide for you
         else
         {
             float f = (playerSpeed * 128) / enemySpeed + 30 * escapeAttempts;

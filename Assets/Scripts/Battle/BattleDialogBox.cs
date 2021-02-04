@@ -14,8 +14,6 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] GameObject moveDetails;
     [SerializeField] GameObject choiceBox;
 
-
-
     [SerializeField] List<Text> actionTexts;
     [SerializeField] List<Text> moveTexts;
    
@@ -119,7 +117,8 @@ public class BattleDialogBox : MonoBehaviour
             }
         }
     }
-
+    
+    //Show if yes or no are highlighted
     public void UpdateChoiceBox(bool yesSelected)
     {
         if (yesSelected)

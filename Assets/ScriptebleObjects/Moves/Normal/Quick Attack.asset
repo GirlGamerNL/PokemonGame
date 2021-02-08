@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Quick Attack
   description: 
-  type: 3
-  power: 100
+  type: 1
+  power: 40
   accuarcy: 100
   alwaysHits: 0
   pp: 30

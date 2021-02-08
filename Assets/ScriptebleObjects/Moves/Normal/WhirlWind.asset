@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84a4e93256c22c4da447175a5d8ba8a, type: 3}
   m_Name: WhirlWind
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 0
+  name: Whirlwind
+  description: not finished
+  type: 1
   power: 0
   accuarcy: 0
-  alwaysHits: 0
-  pp: 0
-  priority: 0
-  category: 0
+  alwaysHits: 1
+  pp: 20
+  priority: -6
+  category: 2
   effects:
     statBoosts: []
     status: 0

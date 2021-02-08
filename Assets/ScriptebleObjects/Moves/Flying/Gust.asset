@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   description: 
-  type: 0
-  power: 0
-  accuarcy: 0
+  type: 12
+  power: 40
+  accuarcy: 100
   alwaysHits: 0
-  pp: 0
+  pp: 35
   priority: 0
-  category: 0
+  category: 1
   effects:
     statBoosts: []
     status: 0

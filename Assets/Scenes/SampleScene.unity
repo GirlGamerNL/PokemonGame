@@ -749,10 +749,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemon:
-  - _base: {fileID: 11400000, guid: 7c708713b3417b04a83d88e65d9429de, type: 2}
+  - _base: {fileID: 11400000, guid: 8902d542cfe99204f8dd1ca07392e750, type: 2}
     level: 5
-  - _base: {fileID: 11400000, guid: 15903fc02b22cbf439fa84ec47203dbd, type: 2}
-    level: 8
+  - _base: {fileID: 11400000, guid: fa1cddeba3916f8499c07a3c532670da, type: 2}
+    level: 6
 --- !u!224 &349108148 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5651119190935373105, guid: 9a3cf0b68828dba4b96c3ae6b50e947f, type: 3}
@@ -7821,7 +7821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemon:
   - _base: {fileID: 11400000, guid: 326df8a17df773648adf4b5e583191de, type: 2}
-    level: 6
+    level: 40
 --- !u!114 &1539405044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9367,8 +9367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemon:
-  - _base: {fileID: 11400000, guid: 7c708713b3417b04a83d88e65d9429de, type: 2}
-    level: 7
+  - _base: {fileID: 11400000, guid: 8902d542cfe99204f8dd1ca07392e750, type: 2}
+    level: 3
 --- !u!1 &1699977031
 GameObject:
   m_ObjectHideFlags: 0

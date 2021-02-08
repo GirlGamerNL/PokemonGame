@@ -20,20 +20,20 @@ MonoBehaviour:
   type1: 2
   type2: 0
   maxHP: 39
-  attack: 52
+  attack: 150
   defence: 43
-  spAttack: 60
+  spAttack: 160
   spDefence: 50
   speed: 65
   expYield: 60
   growthRate: 0
   catchRate: 255
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: d18282592e676e24cbd1c093994217a8, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7ccbabba741cec543ac11cb14a27fe06, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 62674c02a235cd54da25aa0e00e62e76, type: 2}
     level: 1
   - moveBase: {fileID: 11400000, guid: 878e466ea5203464a934e1b98bfb41cf, type: 2}
-    level: 7
-  - moveBase: {fileID: 11400000, guid: c8632fd1d7a03ce418df580eb31724bf, type: 2}
     level: 4
-  - moveBase: {fileID: 11400000, guid: 5a90a692f63630a4aa424f777970cd9f, type: 2}
-    level: 4
+  - moveBase: {fileID: 11400000, guid: 0981255a1bfd73d45ad1ec76ece9b6fa, type: 2}
+    level: 8

@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Gameplay\DialogManager.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonParty.cs" />
+    <Compile Include="Assets\Scripts\Battle\MoveSelectionUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
